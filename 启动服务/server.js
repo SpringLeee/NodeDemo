@@ -1,14 +1,15 @@
-﻿var http = require("http")
+﻿var http = require('http');
 
-http.createServer(function (request,response) {
+http.createServer(function (request, response) {
 
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
+	// 发送 HTTP 头部 
+	// HTTP 状态值: 200 : OK
+	// 内容类型: text/plain
+	response.writeHead(200, {'Content-Type': 'text/plain'});
 
-    response.end('hello node');
-
+	// 发送响应数据 "Hello World"
+	response.end('Hello World\n');
 }).listen(8888);
 
-console.log("8888 启动完成！")
-
-
-
+// 终端打印如下信息
+console.log('Server running at http://127.0.0.1:8888/');

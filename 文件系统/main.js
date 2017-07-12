@@ -1,7 +1,6 @@
-﻿var fs = require("fs")
-//fs.writeFile("dd.txt", "呵呵");
-
-
+﻿var fs=require("fs")
+fs.unlinkSync("dd.txt")
 
 //删除文件
-fs.unlink("dd.txt");
+// var fs = require("fs")
+// fs.unlink("dd.txt");

@@ -7,9 +7,13 @@ var bodyParser = require('body-parser');
 
 // 创建 application/x-www-form-urlencoded 编码解析
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var cookieParser = require('cookie-parser')
+
+app.use(cookieParser());
 
 app.get("/", function (req, res) {
-    res.send("Hello Express");
+    res.send("Hello Node");
+    res.send(req.cookies)
 });
 
 app.get("/Home", function (req, res) {
@@ -17,7 +21,7 @@ app.get("/Home", function (req, res) {
 });
 
 app.get("/Login", function (req,res) {
-
+    
     res.sendFile(__dirname+"/index.html");
 })
 
@@ -27,46 +31,25 @@ app.get("/User", function (req, res) {
     console.log(req.query)
 })
 
-app.post("/Page", urlencodedParser, function (res, req) {
+app.post("/Page", urlencodedParser, function (req, res) {
     
-    console.log(req);
+    console.log(req.body);
     res.send("呵呵呵呵呵")
 
 })
 
-var server = app.listen(8888);
-console.log("8888 => Success");
+app.get("/FilesPage", function (req, res) {
+    res.sendFile(__dirname+"/Files.html")
+})
 
-//------------------------------------------------------------
+app.post("/Files", function (req, res) {
 
+    console.log(req)
+    res.send("哒哒哒哒哒哒");
+})
 
-//var express = require('express');
-//var app = express();
+var server = app.listen(1556);
+console.log("1556 => Success");
 
-//app.use(express.static('public'));
-
-//app.get('/', function (req, res) {
-//    res.sendFile(__dirname + "/" + "index.html");
-//})
-
-//app.post('/process_get', function (req, res) {
-
-   
-//    var response = {
-//        "first_name": req.query.first_name,
-//        "last_name": req.query.last_name
-//    };
-//    console.log(response);
-//    res.end(JSON.stringify(response));
-//})
-
-//var server = app.listen(8081, function () {
-
-//    var host = server.address().address
-//    var port = server.address().port
-
-//    console.log("应用实例，访问地址为 http://%s:%s", host, port)
-
-//})
 
 

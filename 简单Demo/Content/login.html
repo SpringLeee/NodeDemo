@@ -47,7 +47,6 @@
       </div>
     </div>
 
-
       <script type="text/javascript">
           $(function () {
 
@@ -69,7 +68,13 @@
                           pwd: pwd
                       },
                       success: function (data) {
+
                           alert(data);
+                          if (data == "登陆成功") {
+                              location.href = "/";
+                          }
+
+
                       }
 
                   });  

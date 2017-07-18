@@ -13,23 +13,23 @@ app.use(cookieParser());
 app.use(express.static("Content"))
 
 app.get("/", function (req, res) {
-
-    console.log(req.cookies)
-    res.sendfile(__dirname+"/Content/index.html");
+    console.log("")
+    res.sendfile(__dirname + "/Content/index.html");
 });
 
 app.get("/Login", function (req, res) {
-
+    console.log(req.cookies)
     res.sendFile(__dirname+"/Content/login.html");
 })
 
-app.get("/Register", function (req, res) {
 
+app.get("/Register", function (req, res) {
+    console.log(req.cookies)
     res.sendFile(__dirname + "/Content/register.html");
 })
 
 app.post("/LoginAjax", urlencodedParser, function (req, res) {
-
+   
     var user = req.body.user;
     var pwd = crypto.createHash('md5').update(req.body.pwd).digest('hex');
 
@@ -39,13 +39,13 @@ app.post("/LoginAjax", urlencodedParser, function (req, res) {
 
         if (result[0].c > 0) {
 
-            res.cookie("user", user, { expires: new Date(Date.now() + 90000), httpOnly: true });
-           
-            res.end("登陆成功");
+            res.cookie("user", user, { maxAge:1000 });
+
+            res.send("登陆成功");
         }
         else {
-           
-            res.end("用户名密码错误");
+
+            res.send("用户名密码错误");
         }
 
 
@@ -56,6 +56,7 @@ app.post("/LoginAjax", urlencodedParser, function (req, res) {
 
 var server = app.listen(6677);
 console.log("NodeJs Success！")
+
 
 
 

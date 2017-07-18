@@ -1,9 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Express",
-    "\\回调函数"
+    "\\Egg\\demo",
+    "\\Egg\\demo\\egg-example",
+    "\\Egg\\demo\\egg-example\\app",
+    "\\Egg\\demo\\egg-example\\app\\controller",
+    "\\Egg\\demo\\egg-example\\app\\view",
+    "\\Egg\\demo\\egg-example\\app\\view\\news"
   ],
-  "SelectedNode": "\\Express\\main.js",
   "PreviewInSolutionExplorer": false
 }

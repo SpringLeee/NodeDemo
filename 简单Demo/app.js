@@ -1,5 +1,6 @@
 ﻿var express = require('express')
 var app = express();
+var crypto = require('crypto');
 
 var bodyParser = require('body-parser');
 
@@ -28,11 +29,22 @@ app.get("/Register", function (req, res) {
 app.post("/LoginAjax", urlencodedParser, function (req, res) {
 
     var user = req.body.user;
-    var pwd = req.body.pwd;
+    var pwd = crypto.createHash('md5').update(req.body.pwd).digest('hex');
 
-    DB.Query("SELECT count(*) from users", function (err, result, fields) {
+    DB.Query("SELECT count(*) as c from users where nickname= ? and `password`= ?", [user, pwd], function (err, result, fields) {
 
-        console.log(JSON.stringify(results));
+        
+
+        if (result[0].c > 0) {
+         
+            res.end("登陆成功");
+        }
+        else {
+          
+            res.end("用户名密码错误");
+        }
+
+
 
     });
    

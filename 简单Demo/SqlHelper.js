@@ -10,18 +10,13 @@ var conn = mysql.createConnection({
 
 conn.connect();
 
-db.Query = function (sql, fun) {
+db.Query = function (sql,strs,fun) {
 
-    conn.query(sql, function (error, result, fields) {
+    conn.query(sql,strs,function (error, result, fields) {
 
         fun(error, result, fields)
 
     });
 
 }
-
-
-
-
-
 module.exports.Query = db.Query;

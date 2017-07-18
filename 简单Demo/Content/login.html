@@ -19,7 +19,7 @@
     <script src="js/jquery.min.js"></script>
 
     <div class="login-form">
-      <form action="?">
+      <form >
         <div class="top">
           <img src="img/kode-icon.png" alt="icon" class="icon">
           <h1>Kode</h1>
@@ -38,7 +38,7 @@
             <input id="checkbox101" type="checkbox" checked>
             <label for="checkbox101"> 记住我</label>
           </div>
-          <button type="submit" id="login" class="btn btn-default btn-block">登 陆</button>
+          <button type="button" id="login" class="btn btn-default btn-block">登 陆</button>
         </div>
       </form>
       <div class="footer-links row">
@@ -55,6 +55,10 @@
 
                   var user = $("#user").val();
                   var pwd = $("#pwd").val();
+
+                  if (user == "" || pwd == "") {
+                      return;
+                  }
 
                   $.ajax({
 

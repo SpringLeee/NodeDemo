@@ -22,7 +22,12 @@ app.get("/", function (req, res) {
         res.redirect("/Login");
     }
 
-    res.render(__dirname + "/Content/home.html", { data: 123 })
+    DB.Query("select * from topic", function (err,result,filed) {
+
+        res.render(__dirname + "/Content/home.html", { list: result })
+    })
+
+    
 });
 
 app.get("/Login", function (req, res) {
@@ -43,7 +48,16 @@ app.get("/Add", function (req, res) {
 })
 
 app.get("/Info", function (req, res) {
-    res.sendFile(__dirname + "/Content/info.html")
+
+    var tid = req.query.id;
+
+    DB.Query("select * from topic where id = ?", [tid], function (err,result,fields) {
+
+        res.render(__dirname + "/Content/info.html", { data: result[0] })
+
+    })
+
+    
 })
 
 app.post("/LoginAjax", urlencodedParser, function (req, res) {

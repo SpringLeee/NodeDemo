@@ -13,15 +13,23 @@
 
 <body style="background-color:rgba(128, 128, 128, 0.21)">
 
+    
+
     <div class="container">
 
         <div class="panel panel-default" style="margin-top:40px;">
             <div class="panel-body" >
                 <ul class="list-group">
+
+                    <% for(var i=0;i<list.length;i++) {%>
+
                     <li class="list-group-item">
-                        <span>  Java版简易画图板的实现 （by 小明）</span>
-                        <span style="float:right">2017-06-06 12:36</span>
+                        <span><a href="/info?id=<%= list[i].id %> "> <%= list[i].title %>（by <%= list[i].user %>）</a> </span>
+                        <span style="float:right"><%= list[i].createtime %></span>
                     </li>
+
+                    <% } %>
+
                 </ul>
 
 

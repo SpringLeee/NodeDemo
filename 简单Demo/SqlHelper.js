@@ -2,7 +2,7 @@
 
 var mysql = require("mysql");
 var conn = mysql.createConnection({
-    host: 'rxcpt001.mysql.rds.aliyuncs.com',
+    host: 'rxcpt009.mysql.rds.aliyuncs.com',
     user: 'rxcpt01',
     password: 'hercules4c4c4c',
     database: 'testcodefirst'

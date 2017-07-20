@@ -1,12 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Egg\\demo",
-    "\\Egg\\demo\\egg-example",
-    "\\Egg\\demo\\egg-example\\app",
-    "\\Egg\\demo\\egg-example\\app\\controller",
-    "\\Egg\\demo\\egg-example\\app\\view",
-    "\\Egg\\demo\\egg-example\\app\\view\\news"
+    "\\简单Demo",
+    "\\简单Demo\\Content"
   ],
+  "SelectedNode": "\\简单Demo\\app.js",
   "PreviewInSolutionExplorer": false
 }

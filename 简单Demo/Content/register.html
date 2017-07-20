@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
   <meta charset="utf-8">
@@ -16,37 +16,90 @@
   </head>
   <body>
 
+
+      <script src="js/jquery.min.js"></script>
+
     <div class="login-form">
-      <form action="index.html">
+      <form>
         <div class="top">
-          <h1>Register</h1>
-          <h4>Join to our community now !</h4>
+          <h1>用户注册</h1>
+         
         </div>
         <div class="form-area">
           <div class="group">
-            <input type="text" class="form-control" placeholder="Username">
+            <input type="text" id="user" class="form-control" placeholder="用户名">
             <i class="fa fa-user"></i>
           </div>
           <div class="group">
-            <input type="text" class="form-control" placeholder="E-mail">
+            <input type="text" id="email" class="form-control" placeholder="邮箱">
             <i class="fa fa-envelope-o"></i>
           </div>
           <div class="group">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" id="pwd" class="form-control" placeholder="密码">
             <i class="fa fa-key"></i>
           </div>
           <div class="group">
-            <input type="password" class="form-control" placeholder="Password again">
+            <input type="password" id="pwd2" class="form-control" placeholder="再次输入密码">
             <i class="fa fa-key"></i>
           </div>
-          <button type="submit" class="btn btn-default btn-block">REGISTER NOW</button>
+          <button type="button" id="submit" class="btn btn-default btn-block">提 交</button>
         </div>
       </form>
       <div class="footer-links row">
-        <div class="col-xs-6"><a href="#"><i class="fa fa-sign-in"></i> Login</a></div>
-        <div class="col-xs-6 text-right"><a href="#"><i class="fa fa-lock"></i> Forgot password</a></div>
+        <div class="col-xs-6"><a href="/login"><i class="fa fa-sign-in"></i> 登 陆</a></div>
       </div>
     </div>
+
+
+
+      <script type="text/javascript">
+          $(function () {
+
+              $("#submit").click(function () {
+
+                  var user = $("#user").val();
+                  var email = $("#email").val()
+                  var pwd = $("#pwd").val()
+                  var pwd2 = $("#pwd2").val()
+                  if (user == "" || email == "" || pwd == "" || pwd2=="") {
+                      alert("不能为空");
+                      return
+                  }
+                  if (pwd != pwd2) {
+                      alert("两次密码输入不一致");
+                      return
+                  }
+
+                  $.ajax({
+                      url: "/RegisterAjax",
+                      type: "POST",
+                      data: {
+                          user: user,
+                          email: email,
+                          pwd: pwd,
+                          pwd2: pwd2
+                      },
+                      success: function (data) {
+
+                          if (data=="注册成功") {
+
+                              location.href="/"
+                          }
+
+
+                      }
+                  });
+                  
+
+
+              });
+
+
+          })
+      </script>
+
+
+
 
 </body>
 </html>

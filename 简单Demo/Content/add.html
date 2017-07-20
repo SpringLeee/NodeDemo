@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <title>Node</title>
+</head>
+
+
+
+<body style="background-color:rgba(128, 128, 128, 0.21)">
+
+    <div class="container">
+
+        <div class="panel panel-default" style="margin-top:40px;padding:25px">
+          
+            <input id="title" type="text" class="form-control" placeholder="标题">
+
+            <textarea id="text" placeholder="在这里写出您的文章" style="margin-top:20px;margin-bottom:30px" class="form-control" rows="26"></textarea>
+
+            <button type="button" id="submit" class="btn btn-primary">提 交</button>
+
+        </div>
+                
+   </div>
+
+
+
+    <script>
+
+        $(function () {
+
+            $("#submit").click(function () {
+
+                var title = $("#title").val()
+                var text = $("#text").val()
+
+                $.ajax({
+                    url: "/AddAsync",
+                    method: "POST",
+                    data: {
+                        title: title,
+                        text: text
+                    },
+                    success: (data) => {
+
+                        if (data == 1) {
+
+                            alert("发表成功！");
+                            location.href = "/";
+
+                        }
+                        else {
+                            alert("error");
+                        }
+
+                    }
+
+
+                });
+
+
+            });
+        })
+
+    </script>
+
+
+
+</body>
+</html>
+
+
+

@@ -19,4 +19,18 @@ db.Query = function (sql,strs,fun) {
     });
 
 }
-module.exports.Query = db.Query;
+
+
+db.Commit = function (sql, strs, fun) {
+
+    conn.query(sql, strs, function (err,result,fields) {
+
+        fun(err, result, fields)
+
+    })
+
+}
+
+
+
+module.exports = db;

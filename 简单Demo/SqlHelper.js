@@ -6,6 +6,7 @@ var conn = mysql.createConnection({
     user: 'rxcpt01',
     password: 'hercules4c4c4c',
     database: 'testcodefirst'
+
 });
 
 

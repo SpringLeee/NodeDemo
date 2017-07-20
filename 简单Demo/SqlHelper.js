@@ -8,6 +8,7 @@ var conn = mysql.createConnection({
     database: 'testcodefirst'
 });
 
+
 conn.connect();
 
 db.Query = function (sql,strs,fun) {

@@ -17,9 +17,7 @@ db.Query = function (sql,strs,fun) {
     conn.query(sql,strs,function (error, result, fields) {
 
         fun(error, result, fields)
-
     });
-
 }
 
 
@@ -28,12 +26,9 @@ db.Commit = function (sql, strs, fun) {
     conn.query(sql, strs, function (err,result,fields) {
 
         fun(err, result, fields)
-        
 
     })
 
 }
-
-
 
 module.exports = db;

@@ -8,7 +8,6 @@ var conn = mysql.createConnection({
 
 conn.connect();
 
-
 // 查询 
 //var sql = "SELECT * from huochetoutest";
 //conn.query(sql,function (error, result, fields) {

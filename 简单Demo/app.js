@@ -24,6 +24,7 @@ app.get("/", function (req, res) {
 
     DB.Query("select * from topic", function (err,result,filed) {
 
+       
         res.render(__dirname + "/Content/home.html", { list: result })
     })
 
@@ -68,6 +69,7 @@ app.post("/LoginAjax", urlencodedParser, function (req, res) {
     DB.Query("SELECT count(*) as c from users where nickname= ? and `password`= ?", [user, pwd], function (err, result, fields) {
         
 
+
         if (result[0].c > 0) {
 
             res.cookie("user", user, { maxAge:1000*60 });
@@ -78,7 +80,6 @@ app.post("/LoginAjax", urlencodedParser, function (req, res) {
 
             res.send("用户名密码错误");
         }
-
     });
    
 });
@@ -90,6 +91,7 @@ app.post("/RegisterAjax", urlencodedParser, function (req,res) {
     var pwd = crypto.createHash('md5').update(req.body.pwd).digest('hex') ;
     var pwd2 = req.body.pwd2;
 
+    
     var sql = "INSERT INTO users (nickname,password,email,createtime) VALUES (?,?,?, now() )";
     var strs = [user, pwd, email];
 
